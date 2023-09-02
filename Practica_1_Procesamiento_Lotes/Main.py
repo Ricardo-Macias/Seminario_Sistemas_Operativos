@@ -38,16 +38,18 @@ def Clean_IPv4(IPv4):
             IPv4_to_hexadecimal += "."
     
     return IPv4_to_hexadecimal.upper()
-        
-        
-        
-
-
 
 if __name__ == "__main__":
     lines = Read_file()
+    new_file = ""
 
-    line = lines[0].split(',')
-    print(Clean_IPv4(line[5]))
+    for count_lines in range(len(lines)):
+        line = lines[count_lines].split(",")
+        name = line[2]
+        IPv6 = Clean_IPv6(line[0])
+        IPv4 = Clean_IPv4(line[5])
+        new_file = name + " : " + IPv6 + " : " + IPv4 + "\n"
+        Edit_file(new_file)
+
 
     
