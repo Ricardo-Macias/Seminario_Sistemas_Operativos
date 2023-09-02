@@ -11,9 +11,13 @@ def Edit_file(line):
 def hexadecimal_to_decimal(letter):
     return str(int(letter,16))
 
+def decimal_to_hexadecimal(number):
+    return str(hex(int(number)))
+
 
 if __name__ == "__main__":
     lines = Read_file()
 
-    print(hexadecimal_to_decimal("A"))
+    print(decimal_to_hexadecimal(10))
+
     
