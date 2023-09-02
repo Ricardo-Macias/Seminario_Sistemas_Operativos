@@ -26,11 +26,28 @@ def Clean_IPv6(IPv6):
         else:
             aux_IPv6 += IPv6[count]
 
+def Clean_IPv4(IPv4):
+    IPv4 = IPv4.split(".")
+    aux_IPv4,IPv4_to_hexadecimal = "",""
+    for count in range(len(IPv4)):
+        aux_IPv4 = decimal_to_hexadecimal(IPv4[count])
+        for count_IPv4 in range(len(aux_IPv4)):
+            if count_IPv4 > 1:
+                IPv4_to_hexadecimal += aux_IPv4[count_IPv4]
+        if count != len(IPv4)-1:
+            IPv4_to_hexadecimal += "."
+    
+    return IPv4_to_hexadecimal.upper()
+        
+        
+        
+
+
 
 if __name__ == "__main__":
     lines = Read_file()
 
     line = lines[0].split(',')
-    print(Clean_IPv6(line[0]))
+    print(Clean_IPv4(line[5]))
 
     
