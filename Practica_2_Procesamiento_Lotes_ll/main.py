@@ -8,9 +8,12 @@ def Read_file(name):
         contents = file.read()
     return contents
 
-def craete_file(name,text):
+def create_file(name,text):
     with open(name, "a") as file:
         file.write(text)
+
+def create_folder(name):
+    os.mkdir(name)
 
 def folder_contents():
     list_contents = os.listdir()
@@ -20,11 +23,11 @@ def folder_contents():
         else:
             list_folder.append(list_contents[count_contents])
 
+def Enter_folder():
+    pass
 
 x = "D:\\Archivos\\Practicas\\6_Semestre\\Seminario_Sistemas_Operativos\\Practica_2_Procesamiento_Lotes_ll\\Practica"
 
 if __name__ == "__main__":
     os.chdir(x)
-    folder_contents()
-    print(list_file)
-    print(list_folder)
+    create_folder("sub-carpeta_2")
