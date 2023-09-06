@@ -42,7 +42,6 @@ def folder_contents():
             list_origin_directory.append(os.getcwd() + "\\" + list_contents[count_contents])
 
 def create_copies(text):
-    print(list_copies_directory[0])
     os.chdir(list_copies_directory[0])
     for count_file in range(len(list_file)):
         create_file(list_file.pop(0),text)
@@ -89,12 +88,7 @@ def search():
     
 
 if __name__ == "__main__":
-
     root = customtkinter.CTk()
     root.geometry("600x150")
-
-    btn_search = customtkinter.CTkButton(root,text="Buscar", command=search)
-    btn_search.place(x=10,y=10)
-
+    btn_search = customtkinter.CTkButton(root,text="Buscar", command=search).place(x=10,y=10)
     root.mainloop()
-
