@@ -53,10 +53,10 @@ def Batch_processing():
     while len(original) != 0:
         os.chdir(original[0])
         folder_contents()
-        if len(list_file) != 0 or len(list_folder) != 0:
+        if len(list_file) != 0:
             text = Read_file(list_file[0])
             new_text = ASCII(text)
-            create_copies(new_text)
+        create_copies(new_text)
         original.pop(0)
         copies.pop(0)
 
