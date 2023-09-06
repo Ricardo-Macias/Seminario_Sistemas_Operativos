@@ -1,5 +1,7 @@
 import os
 from random import randint
+import customtkinter
+from tkinter import filedialog
 
 list_folder = []
 list_file = []
@@ -62,9 +64,22 @@ def Batch_processing():
 
 x = "D:\\Archivos\\Practicas\\6_Semestre\\Seminario_Sistemas_Operativos\\Practica_2_Procesamiento_Lotes_ll\\Practica"
 
+def search():
+    directory = filedialog.askdirectory(title="Carpeta")
+    lbl_directory = customtkinter.CTkLabel(root, text=directory)
+    lbl_directory.place(x=10,y=60)
+
 if __name__ == "__main__":
 
+    root = customtkinter.CTk()
+    root.geometry("600x150")
 
+    btn_search = customtkinter.CTkButton(root,text="Buscar", command=search)
+    btn_search.place(x=10,y=10)
+
+    root.mainloop()
+
+    """
     os.chdir(x)
     list_origin_directory.append(x)
 
@@ -84,5 +99,6 @@ if __name__ == "__main__":
     list_copies_directory.append(copy_folder)
 
     Batch_processing()
+    """
 
 
