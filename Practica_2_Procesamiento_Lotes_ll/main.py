@@ -1,4 +1,5 @@
 import os
+from random import randint
 
 list_folder = []
 list_file = []
@@ -16,6 +17,16 @@ def create_file(name,text):
 
 def create_folder(name):
     os.mkdir(name)
+
+def ASCII(text):
+    new_text = ""
+    for count_text in range(len(text)):
+        if ord(text[count_text]) >= 65 and ord(text[count_text]) <= 90:
+            number_letter = randint(48,57)
+        elif ord(text[count_text]) >= 48 and ord(text[count_text]) <= 57:
+            number_letter = randint(65,90)
+        new_text += number_letter
+
 
 def folder_contents():
     list_contents = os.listdir()
@@ -36,8 +47,6 @@ def create_copies(text):
         folder = list_folder.pop(0)
         create_folder(folder)
         copies.append(copies[0] + "\\" + folder)
-
-
 
 def Batch_processing():
     while len(original) != 0:
@@ -73,5 +82,4 @@ if __name__ == "__main__":
 
     Batch_processing()
 
-    
-    
+
