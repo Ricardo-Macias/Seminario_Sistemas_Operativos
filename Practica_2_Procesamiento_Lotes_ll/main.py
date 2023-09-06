@@ -62,12 +62,31 @@ def Batch_processing():
         list_origin_directory.pop(0)
         list_copies_directory.pop(0)
 
-x = "D:\\Archivos\\Practicas\\6_Semestre\\Seminario_Sistemas_Operativos\\Practica_2_Procesamiento_Lotes_ll\\Practica"
-
 def search():
     directory = filedialog.askdirectory(title="Carpeta")
     lbl_directory = customtkinter.CTkLabel(root, text=directory)
     lbl_directory.place(x=10,y=60)
+    
+    os.chdir(directory)
+    list_origin_directory.append(directory)
+
+    copy_folder = directory.split("/")
+    name_folder = "Copia_" + copy_folder[len(copy_folder)-1]
+
+    copy_folder.pop()
+    origin = copy_folder
+    copy_directory = copy_folder
+
+    origin = "\\".join(origin)
+    os.chdir(origin)
+    create_folder(name_folder)
+
+    copy_directory.append(name_folder)
+    copy_directory = "\\".join(copy_directory)
+
+    list_copies_directory.append(copy_directory)
+    Batch_processing()
+    
 
 if __name__ == "__main__":
 
@@ -78,27 +97,4 @@ if __name__ == "__main__":
     btn_search.place(x=10,y=10)
 
     root.mainloop()
-
-    """
-    os.chdir(x)
-    list_origin_directory.append(x)
-
-    copy_folder = x.split("\\")
-    name_folder = "Copia_"  + copy_folder[len(copy_folder)-1]
-
-    copy_folder.pop()
-    copy_folder = "\\".join(copy_folder)
-    os.chdir(copy_folder)
-    create_folder(name_folder)
-
-    copy_folder = x.split("\\")
-    copy_folder.pop()
-    copy_folder.append(name_folder)
-    copy_folder = "\\".join(copy_folder) 
-
-    list_copies_directory.append(copy_folder)
-
-    Batch_processing()
-    """
-
 
