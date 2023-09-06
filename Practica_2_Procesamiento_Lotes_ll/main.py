@@ -22,11 +22,13 @@ def ASCII(text):
     new_text = ""
     for count_text in range(len(text)):
         if ord(text[count_text]) >= 65 and ord(text[count_text]) <= 90:
-            number_letter = randint(48,57)
+            number_or_letter = chr(randint(48,57))
         elif ord(text[count_text]) >= 48 and ord(text[count_text]) <= 57:
-            number_letter = randint(65,90)
-        new_text += number_letter
-
+            number_or_letter = chr(randint(65,90))
+        else:
+            number_or_letter = text[count_text]
+        new_text += number_or_letter
+    return new_text
 
 def folder_contents():
     list_contents = os.listdir()
@@ -36,7 +38,6 @@ def folder_contents():
         else:
             list_folder.append(list_contents[count_contents])
             original.append(os.getcwd() + "\\" + list_contents[count_contents])
-
 
 def create_copies(text):
     print(copies[0])
@@ -53,7 +54,9 @@ def Batch_processing():
         os.chdir(original[0])
         folder_contents()
         if len(list_file) != 0 or len(list_folder) != 0:
-            create_copies("Hola")
+            text = Read_file(list_file[0])
+            new_text = ASCII(text)
+            create_copies(new_text)
         original.pop(0)
         copies.pop(0)
 
