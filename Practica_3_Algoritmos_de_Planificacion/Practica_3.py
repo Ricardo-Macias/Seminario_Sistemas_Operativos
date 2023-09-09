@@ -17,8 +17,16 @@ def lowest_to_highest(list_process, position):
                     list_process[count_process + 1] = first_process
     return list_process
 
-    
+def SJF(file):
+    list_process = lowest_to_highest(file,1)
 
+    for count_process in range(len(list_process)):
+        process = list_process[count_process].split(",")
+        print("\nProceso: ", process[0])
+        for count_time in range(int(process[1])):
+            print(count_time + 1, ", ", end="")
+            time.sleep(1)
+    
 def FIFO(file):
 
     for count_process in range(len(file)):
@@ -29,7 +37,7 @@ def FIFO(file):
             time.sleep(1)
 
 def prioridad(file):
-    list_process = lowest_to_highest(file)
+    list_process = lowest_to_highest(file,2)
 
     for count_process in range(len(list_process)):
         process = list_process[count_process].split(",")
@@ -43,8 +51,8 @@ def prioridad(file):
 if __name__ == "__main__":
     file_process = Read_file()
     #FIFO(file_process)
-    print(lowest_to_highest(file_process, 2))
-    #x = file_process[0 + 2].split(",")
-    #print(x)
+    #prioridad(file_process)
+    SJF(file_process)
+
 
     
