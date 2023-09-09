@@ -17,6 +17,23 @@ def lowest_to_highest(list_process, position):
                     list_process[count_process + 1] = first_process
     return list_process
 
+def Round_Robin(file):
+    while len(file) != 0:
+        process = file[0].split(",")
+        print("\nProceso: ",process[0])
+        process_time = int(process[2])
+        for count_quantum in range(3):
+            if process_time != 0:
+                print(count_quantum + 1, ", ", end="")
+                process_time -= 1
+                time.sleep(1)
+            else:
+                break
+        file.pop(0)
+        if process_time > 0:
+            process[2] = process_time
+            file.append(process[0] + ", " + process[1] + ", " + str(process[2]))
+
 def SJF(file):
     list_process = lowest_to_highest(file,1)
 
@@ -46,13 +63,9 @@ def prioridad(file):
             print(count_time + 1, ", ", end="")
             time.sleep(1)
         
-
-
 if __name__ == "__main__":
     file_process = Read_file()
     #FIFO(file_process)
     #prioridad(file_process)
-    SJF(file_process)
-
-
-    
+    #SJF(file_process)
+    Round_Robin(file_process)
