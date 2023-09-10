@@ -76,6 +76,10 @@ def Register():
             file.insert(0,new_process)
         elif cmb_position.get() == "final":
             file.append(new_process)
+        
+        txt_name.delete(0, customtkinter.END)
+        txt_priority.delete(0, customtkinter.END)
+        txt_time.delete(0, customtkinter.END)
 
     lbl_name = customtkinter.CTkLabel(Frame_register, text="Nombre de Proceso")
     lbl_name.place(x=5,y=5)
