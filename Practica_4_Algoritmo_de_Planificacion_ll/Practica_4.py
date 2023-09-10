@@ -19,13 +19,26 @@ def process(list_process,position=None):
             root.update()
             x += 20
             time.sleep(1)
-            
+
+def option(option_process):
+
+    if option_process == "FIFO":
+        process(file)
+    elif option_process == "SJF":
+        process(file,2)
+    elif option_process == "Prioridad":
+        process(file,1)
+    elif option_process == "Round Robin":
+        Practica_3.Round_Robin(file)
+ 
 if __name__ == "__main__":
     file = Practica_3.Read_file()
 
     root = customtkinter.CTk()
     root.title("Algoritmos de planificacion")
-    root.geometry("500x500")
-    process(file)
+    root.geometry("200x200")
+    
+    optionMenu = customtkinter.CTkOptionMenu(root, values=['','FIFO','SJF','Round Robin','Prioridad'], command=option)
+    optionMenu.place(x=5,y=5)
 
     root.mainloop()
