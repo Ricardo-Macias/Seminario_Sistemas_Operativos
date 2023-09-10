@@ -40,7 +40,7 @@ def SJF(file):
     for count_process in range(len(list_process)):
         process = list_process[count_process].split(",")
         print("\nProceso: ", process[0])
-        for count_time in range(int(process[1])):
+        for count_time in range(int(process[2])):
             print(count_time + 1, ", ", end="")
             time.sleep(1)
     
