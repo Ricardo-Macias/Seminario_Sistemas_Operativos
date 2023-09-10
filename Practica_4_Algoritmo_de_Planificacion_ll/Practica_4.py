@@ -62,9 +62,6 @@ def option(option_process):
     elif option_process == "Round Robin":
         Round_Robin(file)
 
-def add_process():
-    pass
-
 def Register():
     Frame_register = customtkinter.CTkFrame(root, width=400, height=400)
     Frame_register.place(x=50, y=50)
@@ -72,6 +69,13 @@ def Register():
     def exit_register():
         Frame_register.destroy()
         return 0
+    
+    def add_process():
+        new_process = txt_name.get() + ", " + txt_priority.get() + ", " + txt_time.get()
+        if cmb_position == "inicio":
+            file.insert(0,new_process)
+        elif cmb_position == "final":
+            file.append(new_process)
 
     lbl_name = customtkinter.CTkLabel(Frame_register, text="Nombre de Proceso")
     lbl_name.place(x=5,y=5)
