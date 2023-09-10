@@ -61,6 +61,40 @@ def option(option_process):
         process(file,1)
     elif option_process == "Round Robin":
         Round_Robin(file)
+
+def add_process():
+    pass
+
+def Register():
+    Frame_register = customtkinter.CTkFrame(root, width=400, height=400)
+    Frame_register.place(x=50, y=50)
+
+    def exit_register():
+        pass
+
+    lbl_name = customtkinter.CTkLabel(Frame_register, text="Nombre de Proceso")
+    lbl_name.place(x=5,y=5)
+    txt_name = customtkinter.CTkEntry(Frame_register)
+    txt_name.place(x=5,y=30)
+
+    lbl_time = customtkinter.CTkLabel(Frame_register, text="Tiempo")
+    lbl_time.place(x=5, y=70)
+    txt_time = customtkinter.CTkEntry(Frame_register)
+    txt_time.place(x=5, y=95)
+
+    lbl_priority = customtkinter.CTkLabel(Frame_register, text="Prioridad")
+    lbl_priority.place(x=5, y=135)
+    txt_priority = customtkinter.CTkEntry(Frame_register)
+    txt_priority.place(x=5, y=160)
+
+    cmb_position = customtkinter.CTkComboBox(Frame_register,values=['inicio','final'])
+    cmb_position.place(x=5, y=200)
+
+    btn_add = customtkinter.CTkButton(Frame_register, text="Agregar", command=add_process,width=100)
+    btn_add.place(x=50, y=250)
+
+    btn_exit = customtkinter.CTkButton(Frame_register, text="Salir", command=exit_register, width=100)
+    btn_exit.place(x=160, y=250)
  
 if __name__ == "__main__":
     file = Practica_3.Read_file()
@@ -71,5 +105,8 @@ if __name__ == "__main__":
     
     optionMenu = customtkinter.CTkOptionMenu(root, values=['','FIFO','SJF','Round Robin','Prioridad'], command=option)
     optionMenu.place(x=5,y=5)
+
+    btn = customtkinter.CTkButton(root,text="Registrar",command=Register)
+    btn.place(x=200,y=5)
 
     root.mainloop()
