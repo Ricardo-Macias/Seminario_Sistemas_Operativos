@@ -70,7 +70,8 @@ def Register():
     Frame_register.place(x=50, y=50)
 
     def exit_register():
-        pass
+        Frame_register.destroy()
+        return 0
 
     lbl_name = customtkinter.CTkLabel(Frame_register, text="Nombre de Proceso")
     lbl_name.place(x=5,y=5)
