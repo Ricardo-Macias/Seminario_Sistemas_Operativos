@@ -35,6 +35,25 @@ def Primer_ajuste(list_file):
                     split_memory(kilobytes, count_memory_space + 1)
                     break
 
+def Mejor_ajuste(list_file):
+    for count_file in range(len(list_file)):
+        file = list_file[count_file].split(",")
+        size_file = string_to_int(file[1])
+        aux_memory = size_file
+        position = None
+        for count_memory_space in range(len(memory_space)):
+            if "." not in memory_space[count_memory_space]:
+                memory = string_to_int(memory_space[count_memory_space])
+                if size_file <= memory:
+                    if aux_memory <= memory:
+                        position = count_memory_space
+                        aux_memory = memory
+        if position != None:
+            memory_space[position] = file[0] + " (" + str(size_file) + "kb)"
+            kilobytes = str(aux_memory - size_file) + "kb"
+            split_memory(kilobytes, position)
+
 if __name__ == "__main__":
-    Primer_ajuste(Read_file())
+    #Primer_ajuste(Read_file())
+    Mejor_ajuste(Read_file())
     print(memory_space)
