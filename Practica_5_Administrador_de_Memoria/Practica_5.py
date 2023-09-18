@@ -14,6 +14,20 @@ def string_to_int(kb):
         else:
             kilobytes += count_kb
 
+def Primer_ajuste(list_file):
+    for count_file in range(len(list_file)):
+        file = list_file[count_file].split(",")
+        size_file = string_to_int(file[1])
+        for count_memory_space in range(len(memory_space)):
+            if "." not in memory_space[count_memory_space]:
+                memory = string_to_int(memory_space[count_memory_space])
+                if size_file <= memory:
+                    memory_space[count_memory_space] = file[0] + " (" + str(size_file) + "kb)"
+                    break
+
+
+
 
 if __name__ == "__main__":
-    print(string_to_int(memory_space[1]))
+    Primer_ajuste(Read_file())
+    print(memory_space)
