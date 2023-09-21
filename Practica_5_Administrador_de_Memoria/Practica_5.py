@@ -69,8 +69,39 @@ def Peor_ajuste(list_file):
             kilobytes = str(aux_memory - size_file) + "kb"
             split_memory(kilobytes, position)
 
+def siguiente_ajuste(list_file):
+    count_file = 0
+    count_memory_space = 0
+    while count_file < len(list_file):
+        if count_file == 0:
+            file = list_file[count_file].split(",")
+            size_file = string_to_int(file[1])
+            current_file = file[0]
+            position = len(memory_space)
+        while count_memory_space < len(memory_space):
+            if "." not in memory_space[count_memory_space]:
+                memory = string_to_int(memory_space[count_memory_space])
+                if size_file <= memory:
+                    memory_space[count_memory_space] = file[0] + " (" + str(size_file) + "kb)"
+                    kilobytes = str(memory - size_file) + "kb"
+                    split_memory(kilobytes, count_memory_space + 1)
+                    count_file += 1
+                    file = list_file[count_file].split(",")
+                    size_file = string_to_int(file[1])
+                    current_file = file[0]
+                    position = count_memory_space - 1
+
+                elif current_file == file[0] and position == count_memory_space:
+                    print("NO hay suficiente espacio pára guardar ", file[0])
+                    count_file += 1
+
+            count_memory_space += 1
+        count_memory_space = 0
+
+
 if __name__ == "__main__":
     #Primer_ajuste(Read_file())
     #Mejor_ajuste(Read_file())
-    Peor_ajuste(Read_file())
+    #Peor_ajuste(Read_file())
+    siguiente_ajuste(Read_file())
     print(memory_space)
