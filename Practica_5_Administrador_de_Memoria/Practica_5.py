@@ -1,6 +1,4 @@
 
-memory_space = ['1000kb', '400kb', '1800kb','700kb', '900kb', '1200kb', '1500kb']
-
 def Read_file():
     with open("D:\\Archivos\\Practicas\\6_Semestre\\Seminario_Sistemas_Operativos\\Practica_5_Administrador_de_Memoria\\archivos.txt", "r") as file:
         content = file.readlines()
@@ -100,8 +98,30 @@ def siguiente_ajuste(list_file):
 
 
 if __name__ == "__main__":
-    #Primer_ajuste(Read_file())
-    #Mejor_ajuste(Read_file())
-    #Peor_ajuste(Read_file())
-    siguiente_ajuste(Read_file())
-    print(memory_space)
+    file = Read_file()
+    while True:
+        memory_space = ['1000kb', '400kb', '1800kb','700kb', '900kb', '1200kb', '1500kb']
+        print("""
+            1.- Primer ajuste
+            2.- Mejor ajuste
+            3.- peor ajuste
+            4.- siguiente ajuste 
+            5.- Salir
+        """)
+        option = int(input("    Opc: "))
+        if option == 1:
+            Primer_ajuste(file)
+            print(memory_space)
+        elif option == 2:
+            Mejor_ajuste(file)
+            print(memory_space)
+        elif option == 3:
+            Peor_ajuste(file)
+            print(memory_space)
+        elif option == 4:
+            siguiente_ajuste(file)
+            print(memory_space)
+        elif option == 5:
+            break
+        else:
+            print("Funcion no valida")
