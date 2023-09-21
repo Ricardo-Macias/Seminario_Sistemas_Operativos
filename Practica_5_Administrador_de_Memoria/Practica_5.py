@@ -1,3 +1,4 @@
+import os
 
 def Read_file():
     with open("D:\\Archivos\\Practicas\\6_Semestre\\Seminario_Sistemas_Operativos\\Practica_5_Administrador_de_Memoria\\archivos.txt", "r") as file:
@@ -131,3 +132,5 @@ if __name__ == "__main__":
             break
         else:
             print("Funcion no valida")
+        input('')
+        os.system('cls')
