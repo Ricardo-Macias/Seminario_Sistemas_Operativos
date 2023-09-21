@@ -32,6 +32,8 @@ def Primer_ajuste(list_file):
                     kilobytes = str(memory - size_file) + "kb"
                     split_memory(kilobytes, count_memory_space + 1)
                     break
+                elif count_memory_space == len(memory_space) -1:
+                    print("NO hay suficiente espacio para guardar ", file[0])
 
 def Mejor_ajuste(list_file):
     for count_file in range(len(list_file)):
@@ -49,6 +51,8 @@ def Mejor_ajuste(list_file):
             memory_space[position] = file[0] + " (" + str(size_file) + "kb)"
             kilobytes = str(aux_memory - size_file) + "kb"
             split_memory(kilobytes, position)
+        else: 
+            print("NO hay suficiente espacio para guardar ", file[0])
 
 def Peor_ajuste(list_file):
     for count_file in range(len(list_file)):
@@ -66,6 +70,8 @@ def Peor_ajuste(list_file):
             memory_space[position] = file[0] + " (" + str(size_file) + "kb)"
             kilobytes = str(aux_memory - size_file) + "kb"
             split_memory(kilobytes, position)
+        else:
+            print("NO hay suficiente espacio para guardar ", file[0])
 
 def siguiente_ajuste(list_file):
     count_file = 0
