@@ -1,17 +1,19 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
+import threading
+import time
 
 class move_image:
-    def __init__(self,app ,image, x, y):
+    def __init__(self,app ,image, x=int, y=int):
         self.app = app
         self.image = image
         self.x = x
         self.y = y
     
     def limit(self):
-        if self.x >= 500:
+        if self.x >= 500 or self.y >= 500:
             self.band = True
-        elif self.y <= 0:
+        elif self.x <= 0 or self.y <= 0:
             self.band = False
     
     def left_to_right(self):
@@ -23,7 +25,9 @@ class move_image:
                 self.x += 10
             self.lbl_image = ctk.CTkLabel(self.app, image=self.image, text="")
             self.lbl_image.place(x=self.x, y=self.y)
-    
+            time.sleep(0.15)
+            self.lbl_image.destroy()
+
     def up_to_down(self):
         while True:
             self.limit()
@@ -33,6 +37,8 @@ class move_image:
                 self.y += 10
             self.lbl_image = ctk.CTkLabel(self.app, image=self.image, text="")
             self.lbl_image.place(x=self.x, y=self.y)
+            time.sleep(0.15)
+            self.lbl_image.destroy()
 
 def imagen(name):
     img = Image.open(name)
@@ -46,7 +52,14 @@ if __name__ == "__main__":
 
     img = imagen(
         "D:\\Archivos\\Practicas\\6_Semestre\\Seminario_Sistemas_Operativos\\Practica_6_Hilos\\DVD.jpg")
-    lbl_imagen_x = ctk.CTkLabel(app, image=img, text="")
-    lbl_imagen_x.place(x=10,y=10)
+    
+    obj_img_1 = move_image(app,img,0,0)
+    obj_img_2 = move_image(app,img, 0,0)
+
+    t1 = threading.Thread(name="Hilo_1", target=obj_img_1.left_to_right)
+    t2 = threading.Thread(name="Hilo_2", target=obj_img_2.up_to_down)
+
+    t1.start()
+    t2.start()
 
     app.mainloop()
