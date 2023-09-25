@@ -1,6 +1,39 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
 
+class move_image:
+    def __init__(self,app ,image, x, y):
+        self.app = app
+        self.image = image
+        self.x = x
+        self.y = y
+    
+    def limit(self):
+        if self.x >= 500:
+            self.band = True
+        elif self.y <= 0:
+            self.band = False
+    
+    def left_to_right(self):
+        while True:
+            self.limit()
+            if self.band:
+                self.x -= 10
+            else:
+                self.x += 10
+            self.lbl_image = ctk.CTkLabel(self.app, image=self.image, text="")
+            self.lbl_image.place(x=self.x, y=self.y)
+    
+    def up_to_down(self):
+        while True:
+            self.limit()
+            if self.band:
+                self.y -= 10
+            else:
+                self.y += 10
+            self.lbl_image = ctk.CTkLabel(self.app, image=self.image, text="")
+            self.lbl_image.place(x=self.x, y=self.y)
+
 def imagen(name):
     img = Image.open(name)
     new_img = img.resize((50,50))
