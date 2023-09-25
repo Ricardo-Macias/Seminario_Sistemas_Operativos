@@ -1,4 +1,4 @@
-import customtkinter as ctk
+from tkinter import *
 from PIL import Image, ImageTk
 import threading
 import time
@@ -16,28 +16,26 @@ class move_image:
             self.band = False
     
     def left_to_right(self):
+        lbl_image = Label(self.app, image=self.image)
         while True:
             self.limit()
             if self.band:
                 self.x_or_y -= 10
             else:
                 self.x_or_y += 10
-            self.lbl_image = ctk.CTkLabel(self.app, image=self.image, text="")
-            self.lbl_image.place(x=self.x_or_y, y=0)
+            lbl_image.place(x=self.x_or_y, y=0)
             time.sleep(0.15)
-            self.lbl_image.destroy()
 
     def up_to_down(self):
+        lbl_image = Label(self.app, image=self.image)
         while True:
             self.limit()
             if self.band:
                 self.x_or_y -= 10
             else:
                 self.x_or_y += 10
-            self.lbl_image = ctk.CTkLabel(self.app, image=self.image, text="")
-            self.lbl_image.place(x=0, y=self.x_or_y)
+            lbl_image.place(x=0, y=self.x_or_y)
             time.sleep(0.15)
-            self.lbl_image.destroy()
 
 def imagen(name):
     img = Image.open(name)
@@ -45,7 +43,7 @@ def imagen(name):
     return ImageTk.PhotoImage(new_img)
 
 if __name__ == "__main__":
-    app = ctk.CTk()
+    app = Tk()
     app.title("Practica 6: Hilos")
     app.geometry("500x500")
 
