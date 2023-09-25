@@ -4,27 +4,26 @@ import threading
 import time
 
 class move_image:
-    def __init__(self,app ,image, x=int, y=int):
+    def __init__(self,app ,image, x_or_y=int):
         self.app = app
         self.image = image
-        self.x = x
-        self.y = y
+        self.x_or_y = x_or_y
     
     def limit(self):
-        if self.x >= 500 or self.y >= 500:
+        if self.x_or_y >= 450:
             self.band = True
-        elif self.x <= 0 or self.y <= 0:
+        elif self.x_or_y <= 0:
             self.band = False
     
     def left_to_right(self):
         while True:
             self.limit()
             if self.band:
-                self.x -= 10
+                self.x_or_y -= 10
             else:
-                self.x += 10
+                self.x_or_y += 10
             self.lbl_image = ctk.CTkLabel(self.app, image=self.image, text="")
-            self.lbl_image.place(x=self.x, y=self.y)
+            self.lbl_image.place(x=self.x_or_y, y=0)
             time.sleep(0.15)
             self.lbl_image.destroy()
 
@@ -32,11 +31,11 @@ class move_image:
         while True:
             self.limit()
             if self.band:
-                self.y -= 10
+                self.x_or_y -= 10
             else:
-                self.y += 10
+                self.x_or_y += 10
             self.lbl_image = ctk.CTkLabel(self.app, image=self.image, text="")
-            self.lbl_image.place(x=self.x, y=self.y)
+            self.lbl_image.place(x=0, y=self.x_or_y)
             time.sleep(0.15)
             self.lbl_image.destroy()
 
@@ -53,8 +52,8 @@ if __name__ == "__main__":
     img = imagen(
         "D:\\Archivos\\Practicas\\6_Semestre\\Seminario_Sistemas_Operativos\\Practica_6_Hilos\\DVD.jpg")
     
-    obj_img_1 = move_image(app,img,0,0)
-    obj_img_2 = move_image(app,img, 0,0)
+    obj_img_1 = move_image(app,img,0)
+    obj_img_2 = move_image(app,img, 0)
 
     t1 = threading.Thread(name="Hilo_1", target=obj_img_1.left_to_right)
     t2 = threading.Thread(name="Hilo_2", target=obj_img_2.up_to_down)
