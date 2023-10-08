@@ -2,8 +2,10 @@ from tkinter import *
 from PIL import Image, ImageTk
 
 class car_park:
-    def _init(self,app):
+    def __init__(self,app):
         self.app = app
+        image_carPark = self.loading_image("Estacionamiento.png",500,500)
+        lbl_image_carPark = Label(self.app, image=image_carPark).pack()
 
     def loading_image(self, name, width, height):
         img = Image.open(name)
@@ -15,5 +17,7 @@ if __name__ == "__main__":
     app = Tk()
     app.geometry("500x500")
     app.title("Practica 7: Producto Consumidor 1")
+
+    carPark = car_park(app)
 
     app.mainloop()
