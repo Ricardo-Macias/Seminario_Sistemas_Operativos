@@ -52,12 +52,49 @@ class car_park:
             self.lbl_car_12 = Label(self.app, image=self.img_car)
             self.lbl_car_12.place(x=600, y=260)
     
+    def remove(self,position):
+        if position == 0:
+            self.lbl_car_1.destroy()
+        elif position == 1:
+            self.lbl_car_2.destroy()
+        elif position == 2:
+            self.lbl_car_3.destroy()
+        elif position == 3:
+            self.lbl_car_4.destroy()
+        elif position == 4:
+            self.lbl_car_5.destroy()
+        elif position == 5:
+            self.lbl_car_6.destroy()
+        elif position == 6:
+            self.lbl_car_7.destroy()
+        elif position == 7:
+            self.lbl_car_8.destroy()
+        elif position == 8:
+            self.lbl_car_9.destroy()
+        elif position == 9:
+            self.lbl_car_10.destroy()
+        elif position == 10:
+            self.lbl_car_11.destroy()
+        elif position == 11:
+            self.lbl_car_12.destroy()
+    
     def start_producer(self):
         count_car = 0
         while True:
             if self.carPark[count_car] == 0:
                 self.parking(count_car)
                 self.carPark[count_car] = 1
+                count_car += 1
+            if count_car > 11:
+                count_car = 0
+            tm.sleep(self.second())
+    
+    def start_consumer(self):
+        count_car = 0
+        while True:
+            if self.carPark[count_car] == 1:
+                self.remove(count_car)
+                self.carPark[count_car] = 0
                 count_car += 1
             if count_car > 11:
                 count_car = 0
