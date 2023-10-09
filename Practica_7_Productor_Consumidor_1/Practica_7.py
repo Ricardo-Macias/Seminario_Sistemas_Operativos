@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 from random import randint
 import time as tm
+import threading
 
 class car_park:
     def __init__(self,app,car):
@@ -84,7 +85,7 @@ class car_park:
             if self.carPark[count_car] == 0:
                 self.parking(count_car)
                 self.carPark[count_car] = 1
-                count_car += 1
+                count_car = count_car + 1
             if count_car > 11:
                 count_car = 0
             tm.sleep(self.second())
@@ -99,7 +100,6 @@ class car_park:
             if count_car > 11:
                 count_car = 0
             tm.sleep(self.second())
-
 
 def loading_image( name, width, height):
     img = Image.open(name)
@@ -120,6 +120,9 @@ if __name__ == "__main__":
 
     carPark = car_park(app,img_car)
 
-    carPark.start_producer()
+    productor = threading.Thread(name="Productor", target=carPark.start_producer)
+    consumidor = threading.Thread(name="Consumidor", target=carPark.start_consumer)
+    productor.start()
+    consumidor.start()
 
     app.mainloop()
