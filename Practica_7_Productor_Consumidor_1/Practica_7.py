@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 from PIL import Image, ImageTk
 from random import randint
 import time as tm
@@ -10,6 +11,44 @@ class car_park:
         self.img_car = car
         self.time = [0.5, 1, 2]
         self.carPark = [0,0,0,0,0,0,0,0,0,0,0,0]
+        self.time_producer = "Aleatorio"
+        self.time_consumer = "Aleatorio"
+
+        barMenu = Menu(self.app)
+        editMenu = Menu(barMenu)
+        editMenu.add_command(label="Edit", command=self.edit)
+        barMenu.add_cascade(label="time",menu=editMenu)
+        self.app.config(menu=barMenu)
+    
+    def edit(self):
+        root = Tk()
+        root.title("Edit")
+        root.geometry("180x180")
+
+        Label(root, text="Productor").place(x=10, y=10)
+        variable_producer = StringVar()
+        self.cmb_time_producer = ttk.Combobox(
+            root, width=17, textvariable=variable_producer)
+        self.cmb_time_producer["values"] = ("Aleatorio", "0.5", "1", "2")
+        self.cmb_time_producer.place(x=10, y=40)
+        self.cmb_time_producer.current(0)
+
+        Label(root, text="Consumidor").place(x=10, y=80)
+        variable_consumer = StringVar()
+        self.cmb_time_consumer = ttk.Combobox(
+            root, width=17, textvariable=variable_consumer)
+        self.cmb_time_consumer["values"] = ("Aleatorio", "0.5", "1", "2")
+        self.cmb_time_consumer.place(x=10, y=110)
+        self.cmb_time_consumer.current(0)
+
+        btn_save = Button(root, text="Guardar", command=self.edit_time)
+        btn_save.place(x=20, y=150)
+
+        root.mainloop()
+    
+    def edit_time(self):
+        self.time_consumer = self.cmb_time_consumer.get()
+        self.time_producer = self.cmb_time_producer.get()
     
     def second(self):
         time = randint(0,2)
@@ -88,7 +127,10 @@ class car_park:
                 count_car = count_car + 1
             if count_car > 11:
                 count_car = 0
-            tm.sleep(self.second())
+            if self.time_producer == "Aleatorio":
+                tm.sleep(self.second())
+            else:
+                tm.sleep(float(self.time_producer))
     
     def start_consumer(self):
         count_car = 0
@@ -99,7 +141,10 @@ class car_park:
                 count_car += 1
             if count_car > 11:
                 count_car = 0
-            tm.sleep(self.second())
+            if self.time_consumer == "Aleatorio":
+                tm.sleep(self.second())
+            else:
+                tm.sleep(float(self.time_consumer))
 
 def loading_image( name, width, height):
     img = Image.open(name)
