@@ -6,11 +6,17 @@ def edit():
     txt_read.configure(state="normal")
     txt_read_2.configure(state="normal")
 
+def save():
+    text_txtbox = txt_writer.get("1.0", "end-1c")
+    print(text_txtbox)
+
+
 if __name__ == "__main__":
     app = customtkinter.CTk()
     app.geometry("800x500")
     app.title("Practica 8: Producto Consumidor")
 
+    text_txtbox = ""
 
     txt_writer = customtkinter.CTkTextbox(app, width=250, height=400)
     txt_writer.place(x=10, y=50)
@@ -21,7 +27,7 @@ if __name__ == "__main__":
 
     btn_read = customtkinter.CTkButton(app, text="Leer", width=50)
     btn_read.place(x=10, y=20)
-    btn_save = customtkinter.CTkButton(app, text="Guardar", width=50)
+    btn_save = customtkinter.CTkButton(app, text="Guardar", width=50, command=save)
     btn_save.place(x=70, y=20)
     btn_edit = customtkinter.CTkButton(app, text="Editar", width=50, command=edit)
     btn_edit.place(x=140, y=20)
