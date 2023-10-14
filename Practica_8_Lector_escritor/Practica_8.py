@@ -30,5 +30,4 @@ if __name__ == "__main__":
     txt_read.configure(state="disabled")
     txt_read_2.configure(state="disabled")
 
-
     app.mainloop()
