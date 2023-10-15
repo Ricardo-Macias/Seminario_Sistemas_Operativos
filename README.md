@@ -26,3 +26,21 @@
     Los digitos se cambiaran por letras mayusculas.
   </li>
 </p>
+
+## Practica 3: Algoritmos de planificacion 1
+
+<p>
+  Utilizando los procesos definidos en el archivo se simulara los siguientes algoritmos:
+  <li>
+    Round Robin (lapso)
+  </li>
+  <li>
+    SJF (El mas corto  primero)
+  </li>
+  <li>
+    FIFO (El primero en llegar, el primero en salir)
+  </li>
+  <li>
+    Prioridades (Establece prioridades)
+  </li>
+</p>
