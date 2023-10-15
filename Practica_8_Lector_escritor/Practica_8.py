@@ -50,28 +50,32 @@ class Interfaz:
     
     def reader(self):
         tm = [1, 1.5, 2]
-        for count in self.text_txtbox:
-            self.sem.acquire()
-            print("reader")
-            self.letter = count
+        count = 0
+        while count < len(self.text_txtbox):
+            if self.letter == "":
+                self.sem.acquire()
+                print("reader")
+                self.letter = self.text_txtbox[count]
 
-            self.sem.release()
-            time.sleep(tm[random.randint(0, 2)])
+                self.sem.release()
+                time.sleep(tm[random.randint(0, 2)])
+                count += 1   
     
     def writer(self):
         tm = [0.5, 1, 2]
-        for count in range(len(self.text_txtbox)):
+        count = 0
+        while count < len(self.text_txtbox):
+            if self.letter != "":
+                self.sem.acquire()
+                print("writer")
 
-            self.sem.acquire()
-            print("writer")
+                self.txt_read.insert(customtkinter.END, self.letter)
+                self.letter = ""
 
-            self.txt_read.insert(customtkinter.END, self.letter)
+                self.sem.release()
 
-            self.sem.release()
-
-            time.sleep(tm[random.randint(0, 2)])
-
-
+                time.sleep(tm[random.randint(0, 2)])
+                count += 1
 
 if __name__ == "__main__":
     app = customtkinter.CTk()
