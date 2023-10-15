@@ -39,13 +39,37 @@ class Interfaz:
         self.txt_writer.configure(state="disabled")
     
     def reader_writer(self):
-        self.reader()
+        self.txt_read.configure(state="normal")
+        self.txt_read_2.configure(state="normal")
+
+        read = threading.Thread(name="Lector", target=self.reader)
+        write = threading.Thread(name="Escritor", target=self.writer)
+
+        read.start()
+        write.start()
     
     def reader(self):
         tm = [1, 1.5, 2]
         for count in self.text_txtbox:
+            self.sem.acquire()
+            print("reader")
             self.letter = count
-            time.sleep(tm[random.randint(0,2)])
+
+            self.sem.release()
+            time.sleep(tm[random.randint(0, 2)])
+    
+    def writer(self):
+        tm = [0.5, 1, 2]
+        for count in range(len(self.text_txtbox)):
+
+            self.sem.acquire()
+            print("writer")
+
+            self.txt_read.insert(customtkinter.END, self.letter)
+
+            self.sem.release()
+
+            time.sleep(tm[random.randint(0, 2)])
 
 
 
