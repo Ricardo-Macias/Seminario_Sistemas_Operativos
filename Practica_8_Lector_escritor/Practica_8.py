@@ -8,7 +8,8 @@ class Interfaz:
         self.app = app
         self.sem = threading.Semaphore(1)
         self.text_txtbox = ""
-        self.letter = ""
+        self.letter_textbox_textbox = ""
+        self.letter_textbox_textbox_2 = ""
 
         self.txt_writer = customtkinter.CTkTextbox(self.app, width=250, height=400)
         self.txt_writer.place(x=10, y=50)
@@ -52,10 +53,9 @@ class Interfaz:
         tm = [1, 1.5, 2]
         count = 0
         while count < len(self.text_txtbox):
-            if self.letter == "":
+            if self.letter_textbox == "":
                 self.sem.acquire()
-                print("reader")
-                self.letter = self.text_txtbox[count]
+                self.letter_textbox = self.text_txtbox[count]
 
                 self.sem.release()
                 time.sleep(tm[random.randint(0, 2)])
@@ -65,12 +65,11 @@ class Interfaz:
         tm = [0.5, 1, 2]
         count = 0
         while count < len(self.text_txtbox):
-            if self.letter != "":
+            if self.letter_textbox != "":
                 self.sem.acquire()
-                print("writer")
 
-                self.txt_read.insert(customtkinter.END, self.letter)
-                self.letter = ""
+                self.txt_read.insert(customtkinter.END, self.letter_textbox)
+                self.letter_textbox = ""
 
                 self.sem.release()
 
