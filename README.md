@@ -65,3 +65,14 @@
     </ul>
   </ul>
 </p>
+
+## Practica 5: Administrador de memoria 1
+<p>
+  Utilizando los procesos definidos en el archivo se simulara los siguientes algoritmos:
+  <ul>
+    <li>Primer ajuste</li>
+    <li>Mejor ajuste</li>
+    <li>Peor ajuste</li>
+    <li>Siguiente ajuste</li>
+  </ul>
+</p>
