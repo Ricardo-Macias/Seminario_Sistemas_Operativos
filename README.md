@@ -76,3 +76,12 @@
     <li>Siguiente ajuste</li>
   </ul>
 </p>
+
+## Practica 6: Hilos
+<p>
+  Mover dos imagenes al mismo tiempo
+  <ul>
+    <li>Mover una imagen de izquierda a derecha</li>
+    <li>Mover una imagen de arriba hacia abajo</li>
+  </ul>
+</p>
