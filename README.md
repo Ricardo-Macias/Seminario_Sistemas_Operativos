@@ -85,3 +85,17 @@
     <li>Mover una imagen de arriba hacia abajo</li>
   </ul>
 </p>
+
+## Practica 7: Productor - Consumidor 1
+<p>
+  Se realizo un programa que controle la entrada y salida de un estacionamiento.
+  <ul>
+    <li>El estacionamiento tiene un tamaño de 12.</li>
+    <li>El programa añade un auto con una frecuencia de 0.5, 1 o 2 segundos elegidos de manera aletoria.</li>
+    <li>El usuario puede modificar la frecuencia en la que se añaden autos.</li>
+    <li>El programa retira un auto con una frecuencia de 0.5, 1 0 2 segundos elegidos de manera aleatoria.</li>
+    <li>El usuario puede modificar la frecuencia en la que se retiran autos. </li>
+    <li>No se pueden retirar autos si el estacionamiento esta vacio.</li>
+    <li>No se pueden añadir autos si el estacionamiento esta lleno.</li>
+  </ul>
+</p>
