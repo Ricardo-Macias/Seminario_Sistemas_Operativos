@@ -99,3 +99,12 @@
     <li>No se pueden añadir autos si el estacionamiento esta lleno.</li>
   </ul>
 </p>
+
+## Practica 8: Lector - Escritor 1
+<p>
+  Se realizo un programa que tiene 2 lectores, 2 escritores y un fichero fisico para interactuar.
+  <ul>
+    <li>Los escritores deben escribir en el fichero con una frecuencia de 0.5, 1 o 2 segundos elegida aleatoriamente por el programa.</li>
+    <li>Los lectores deben leer el fichero con una frecuencia de 1, 1.5 o 2 segundos elegida aleatoriamente por el programa.</li>
+  </ul>
+</p>
