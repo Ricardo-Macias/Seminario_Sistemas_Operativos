@@ -1,5 +1,7 @@
 # Seminario Sistemas Operativos
 
+Este repositorio contiene las actividades realizadas durante la materia de Seminario de Solucion de Problemas de Sistemas Operativos
+
 ## Practica 1: Procesamientos por lotes
 
 <p>
